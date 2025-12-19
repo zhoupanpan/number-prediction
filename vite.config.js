@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
+  root: '.',
   plugins: [
     vue(),
     VitePWA({
@@ -111,6 +112,7 @@ export default defineConfig({
     open: true
   },
   build: {
-    target: 'es2015'
+    target: 'es2015',
+    outDir: 'dist'
   }
 })

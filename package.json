@@ -9,9 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@capacitor/cli": "^8.0.0",
-    "@capacitor/core": "^8.0.0",
-    "@capacitor/ios": "^8.0.0",
+    "@capacitor/cli": "^7.1.0",
+    "@capacitor/core": "^7.1.0",
+    "@capacitor/ios": "^7.1.0",
     "localforage": "^1.10.0",
     "openai": "^6.8.1",
     "vite-plugin-pwa": "^1.2.0",
