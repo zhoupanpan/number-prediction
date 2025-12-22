@@ -1,0 +1,32 @@
+{
+  "name": "数字预测应用",
+  "short_name": "数字预测",
+  "description": "智能数字预测与分析工具",
+  "theme_color": "#667eea",
+  "background_color": "#764ba2",
+  "display": "standalone",
+  "orientation": "portrait",
+  "start_url": "/index.html",
+  "scope": "/",
+  "categories": ["productivity", "utilities"],
+  "lang": "zh-CN",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "pwa-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "pwa-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
