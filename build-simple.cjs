@@ -15,10 +15,10 @@ function fixBuildPaths() {
     let content = fs.readFileSync(indexPath, 'utf8');
     
     // 替换所有相对路径为GitHub Pages绝对路径
-    content = content.replace(/(src|href)="\.\/([^"]*)"/g, '$1="/number-prediction/$2"');
+    content = content.replace(/(src|href)="\.\/([^"]*)"/g, '$1="/$2"');
     
     // 确保registerSW.js有type="module"属性
-    content = content.replace('<script src="/number-prediction/registerSW.js">', '<script type="module" src="/number-prediction/registerSW.js">');
+    content = content.replace('<script src="/registerSW.js">', '<script type="module" src="/registerSW.js">');
     
     fs.writeFileSync(indexPath, content, 'utf8');
     console.log('✅ index.html路径修复完成');
@@ -33,7 +33,7 @@ function fixBuildPaths() {
     if (manifest.icons) {
       manifest.icons = manifest.icons.map(icon => {
         if (icon.src && !icon.src.startsWith('http')) {
-          icon.src = '/number-prediction/' + icon.src;
+          icon.src = '/' + icon.src;
         }
         return icon;
       });
@@ -41,7 +41,7 @@ function fixBuildPaths() {
     
     // 修复start_url
     if (manifest.start_url) {
-      manifest.start_url = '/number-prediction/';
+      manifest.start_url = '/';
     }
     
     fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2), 'utf8');
