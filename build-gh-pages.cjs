@@ -10,11 +10,15 @@ function fixIndexHtmlForGitHubPages() {
   if (fs.existsSync(indexPath)) {
     let content = fs.readFileSync(indexPath, 'utf8');
     
-    // 替换相对路径为绝对路径
-    content = content.replace(/\.\//g, '/number-prediction/');
+    // 更精确地替换相对路径为绝对路径
+    // 只替换src和href属性中的相对路径，避免影响其他内容
+    content = content.replace(/(src|href)="\.\/([^"]*)"/g, '$1="/number-prediction/$2"');
     
     // 修复manifest路径
     content = content.replace('href="./manifest.webmanifest"', 'href="/number-prediction/manifest.webmanifest"');
+    
+    // 修复registerSW.js脚本路径
+    content = content.replace('src="./registerSW.js"', 'src="/number-prediction/registerSW.js"');
     
     fs.writeFileSync(indexPath, content, 'utf8');
     console.log('✅ GitHub Pages路径修复完成');
@@ -66,7 +70,9 @@ async function main() {
   
   try {
     console.log('📦 执行Vite构建...');
-    execSync('npm run build', { stdio: 'inherit' });
+    // 设置环境变量，确保构建时使用正确的相对路径
+    const env = { ...process.env, VITE_BASE_PATH: './' };
+    execSync('npm run build', { stdio: 'inherit', env });
     
     console.log('🔧 修复GitHub Pages路径...');
     fixIndexHtmlForGitHubPages();
