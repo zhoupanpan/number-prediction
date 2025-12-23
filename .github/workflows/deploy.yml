@@ -39,10 +39,9 @@ jobs:
           
       - name: Build for GitHub Pages
         run: |
-          # 使用专用构建脚本
-          node build-gh-pages.cjs
-          # 复制404.html到dist目录用于SPA路由
-          cp 404.html dist/404.html
+          # 使用简化版构建脚本
+          node build-simple.cjs
+          # 列出构建结果
           ls -la dist/
         
       - name: Setup Pages
