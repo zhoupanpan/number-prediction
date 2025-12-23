@@ -70,9 +70,8 @@ async function main() {
   
   try {
     console.log('📦 执行Vite构建...');
-    // 设置环境变量，确保构建时使用正确的相对路径
-    const env = { ...process.env, VITE_BASE_PATH: './' };
-    execSync('npm run build', { stdio: 'inherit', env });
+    // 首先执行正常的Vite构建（使用相对路径）
+    execSync('npm run build', { stdio: 'inherit' });
     
     console.log('🔧 修复GitHub Pages路径...');
     fixIndexHtmlForGitHubPages();
