@@ -37,9 +37,12 @@ jobs:
         run: |
           npm ci --prefer-offline
           
-      - name: Build
+      - name: Build for GitHub Pages
         run: |
-          npm run build
+          # 使用专用构建脚本
+          node build-gh-pages.js
+          # 复制404.html到dist目录用于SPA路由
+          cp 404.html dist/404.html
           ls -la dist/
         
       - name: Setup Pages
